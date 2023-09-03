@@ -3,6 +3,9 @@ from os import makedirs, path
 
 
 class StockDataGenerator:
+    """
+    TODO add docstrings
+    """
     def __init__(self, action: str):
         self.ticker = yf.Ticker(action)
         self.action = action

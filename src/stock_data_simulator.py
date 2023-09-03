@@ -4,7 +4,9 @@ from stock_data_generator import StockDataGenerator
 from stock_data_producer import StockDataProducer
 
 class StockDataSimulator:
-
+    """
+    TODO add docstrings
+    """
     def __init__(self):
         self.config = StockDataSimulator.get_config()
         self.generator = StockDataGenerator(
@@ -21,12 +23,12 @@ class StockDataSimulator:
             self.producer.send_message(msg=dict(record))
             time.sleep(1/self.config.get('simulationRatePerSec'))
 
-
     @staticmethod
     def get_config():
         with open('config/parameters.json') as file:
             return json.load(file)
 
 
-simulator = StockDataSimulator()
-simulator.simulate()
+if __name__ == '__main__':
+    simulator = StockDataSimulator()
+    simulator.simulate()

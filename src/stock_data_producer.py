@@ -2,6 +2,9 @@ import json
 from kafka import KafkaProducer
 
 class StockDataProducer:
+    """
+    TODO add docstrings
+    """
     def __init__(self, broker: str, topic: str):
         self.broker = broker
         self.topic = topic
