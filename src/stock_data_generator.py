@@ -8,7 +8,9 @@ class StockDataGenerator:
         self.action = action
 
     def get_historical_data(self, period: str='1y'):
-        return self.ticker.history(period=period)
+        data = self.ticker.history(period=period).reset_index()
+        data['Date'] = data['Date'].dt.strftime(r'%d/%m/%Y') # get rid of hours scope
+        return data
 
     def download_data(self, dir_path: str='./data', period: str='1y'):
         makedirs(dir_path, exist_ok=True)
@@ -17,8 +19,3 @@ class StockDataGenerator:
             orient='table',
             indent=4
         )
-
-
-gen = StockDataGenerator('AAPL')
-# print(gen.get_historical_data('1y'))
-gen.download_data('data')
