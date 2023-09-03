@@ -1,0 +1,7 @@
+{
+    "stockActionName": "AAPL",
+    "period": "1y",
+    "simulationRatePerSec": 2,
+    "bootstrapServers": "127.0.0.1:9092",
+    "kafkaTopic": "python-test"
+}
