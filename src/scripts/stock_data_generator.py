@@ -13,7 +13,7 @@ class StockDataGenerator:
     def get_historical_data(self, period: str='1y'):
         data = self.ticker.history(period=period).reset_index()
         data['Id'] = self.action + data['Date'].dt.strftime(r'%Y%m%d').astype(str)
-        data['Date'] = data['Date'].dt.strftime(r'%d/%m/%Y') # get rid of hours scope
+        data['Date'] = data['Date'].dt.strftime(r'%Y%m%d').astype(int) # get rid of hours scope
         return data
 
     def download_data(self, dir_path: str='./data', period: str='1y'):
