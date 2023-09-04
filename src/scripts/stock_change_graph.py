@@ -23,10 +23,19 @@ class OpenSearchClient:
         )
         
     def get_documents(self, index: str, query: str):
-        return self.client.seach(
+        return self.client.search(
             index=index,
             body={query}
         )
+    
+    def get_current_value(self, index: str):
+        query = """{"sort": [{"Date": {"order": "desc"}}], "size": 1}"""
+        curr_value = (
+            self.get_documents(index, query)
+            .get('hits').get('hits')[0].get('_source').get('Close')
+        )
+        return curr_value
+
 
 client = OpenSearchClient('localhost', 9200)
 # print(client.info)
