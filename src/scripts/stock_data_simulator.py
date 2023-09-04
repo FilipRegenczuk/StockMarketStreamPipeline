@@ -27,7 +27,7 @@ class StockDataSimulator:
 
     @staticmethod
     def get_config():
-        config_path = join(Path(__file__).parent.parent, 'config/parameters.json')
+        config_path = join(Path(__file__).parent.parent.parent, 'config/parameters.json')
         try:
             with open(config_path) as file:
                 return json.load(file)
