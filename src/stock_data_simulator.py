@@ -1,5 +1,7 @@
 import json
 import time
+from pathlib import Path
+from os.path import join
 from stock_data_generator import StockDataGenerator
 from stock_data_producer import StockDataProducer
 
@@ -25,9 +27,13 @@ class StockDataSimulator:
 
     @staticmethod
     def get_config():
-        with open('config/parameters.json') as file:
-            return json.load(file)
-
+        config_path = join(Path(__file__).parent.parent, 'config/parameters.json')
+        try:
+            with open(config_path) as file:
+                return json.load(file)
+        except FileNotFoundError:
+            print(f"Config file not found on path {config_path}!")
+            raise
 
 if __name__ == '__main__':
     simulator = StockDataSimulator()
