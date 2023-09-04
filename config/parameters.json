@@ -3,5 +3,6 @@
     "period": "1y",
     "simulationRatePerSec": 2,
     "bootstrapServers": "127.0.0.1:9092",
-    "kafkaTopic": "pipeline-test"
+    "kafkaTopic": "pipeline-test",
+    "openSearch": "127.0.0.1:9200"
 }
