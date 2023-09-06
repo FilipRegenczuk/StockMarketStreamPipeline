@@ -4,7 +4,23 @@ from os import makedirs, path
 
 class StockDataGenerator:
     """
-    TODO add docstrings
+    Class defines stock data generator, which task is to download historical
+    data for a specified action from the Yahoo! Finance portal.
+
+    Attributes
+    ----------
+    action : str
+        Name of stock market action.
+
+    Methods
+    -------
+    get_historical_data(period: str) 
+        Returns action historical data for specified period. Method returns pandas
+        DataFrame with additional column 'Id' (action name and datestamp).
+    
+    download_data(dir_path: str, period: str)
+        Saves action historical data for specified period to JSON file.
+
     """
     def __init__(self, action: str):
         self.ticker = yf.Ticker(action)
